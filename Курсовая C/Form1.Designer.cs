@@ -32,7 +32,9 @@ namespace Курсовая_C
             this.components = new System.ComponentModel.Container();
             this.picDisplay = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tbDirection = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             this.SuspendLayout();
             // 
             // picDisplay
@@ -50,16 +52,28 @@ namespace Курсовая_C
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tbDirection
+            // 
+            this.tbDirection.Location = new System.Drawing.Point(28, 491);
+            this.tbDirection.Maximum = 359;
+            this.tbDirection.Name = "tbDirection";
+            this.tbDirection.Size = new System.Drawing.Size(104, 45);
+            this.tbDirection.TabIndex = 1;
+            this.tbDirection.Scroll += new System.EventHandler(this.tbDirection_Scroll);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 477);
+            this.ClientSize = new System.Drawing.Size(870, 571);
+            this.Controls.Add(this.tbDirection);
             this.Controls.Add(this.picDisplay);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -67,6 +81,7 @@ namespace Курсовая_C
 
         private System.Windows.Forms.PictureBox picDisplay;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TrackBar tbDirection;
     }
 }
 
