@@ -108,7 +108,14 @@ namespace Курсовая_C
 
         private void tbDirection_Scroll(object sender, EventArgs e)
         {
+            label1.Text = $"Направление {tbDirection.Value}°";
             emitter.Direction = tbDirection.Value;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            label2.Text = $"Разброс {trackBar1.Value}°";
+            emitter.Spreading = trackBar1.Value;
         }
     }
 }
