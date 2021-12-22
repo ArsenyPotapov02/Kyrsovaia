@@ -60,7 +60,7 @@ namespace Курсовая_C
                         //p.SpeedY = points[1].Y;// Считаем новый вектор частиц
 
                          p.SpeedX = (gX - 2 * (gX * nX) * nX)/1000000000;
-                         p.SpeedY = (gY - 2 * (gY * nY) * nY)/100000000;
+                         p.SpeedY = (gY - 2 * (gY * nY) * nY)/1000000000;
 
                     }
                   
@@ -71,7 +71,7 @@ namespace Курсовая_C
             public override void Render(Graphics g)
             {
                 g.DrawEllipse(
-                    new Pen(Color.Purple),
+                    new Pen(Color.Lime),
                     X - 40,
                     Y - 40,
                     80,

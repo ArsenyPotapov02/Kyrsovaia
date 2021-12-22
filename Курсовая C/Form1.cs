@@ -19,6 +19,8 @@ namespace Курсовая_C
         PaintPoint point4;
         PaintPoint point5;
         ReboundPoint point6;
+        ReboundPoint point7;
+        ReboundPoint point8;
         public Form1()
         {
             InitializeComponent();
@@ -79,6 +81,18 @@ namespace Курсовая_C
                 Y = picDisplay.Height / 2,
             };
             emitter.impactPoints.Add(point6);
+            point7 = new ReboundPoint // отскакиваемая точка
+            {
+                X = picDisplay.Width / 6 *5,
+                Y = picDisplay.Height / 2*3,
+            };
+            emitter.impactPoints.Add(point7);
+            point8 = new ReboundPoint // отскакиваемая точка
+            {
+                X = picDisplay.Width / 4 *5 ,
+                Y = picDisplay.Height / 8* 3,
+            };
+            emitter.impactPoints.Add(point8);
         }
 
 
