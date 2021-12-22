@@ -13,27 +13,72 @@ namespace Курсовая_C
         
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
-
+        PaintPoint point1;
+        PaintPoint point2;
+        PaintPoint point3;
+        PaintPoint point4;
+        PaintPoint point5;
+        ReboundPoint point6;
         public Form1()
         {
             InitializeComponent();
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
-            this.emitter = new Emitter // создаю эмиттер и привязываю его к полю emitter
+            this.emitter = new Emitter 
             {
                 Direction = 0,
                 Spreading = 10,
                 SpeedMin = 10,
-                SpeedMax = 10,
+                SpeedMax = 15,
                 ColorFrom = Color.Gold,
                 ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 10,
+                ParticlesPerTick = 50,
                 X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2,
+                Y = picDisplay.Height / 4 ,
             };
 
             emitters.Add(this.emitter);
-
+            point1 = new PaintPoint // создали точки расскрашивания
+            {
+               color = Color.DarkBlue,
+               X = picDisplay.Width / 2,
+               Y = picDisplay.Height / 2,
+            };
+            emitter.impactPoints.Add(point1);
+            point2 = new PaintPoint // создали точки расскрашивания
+            {
+                color = Color.LightYellow,
+                X = picDisplay.Width / 4,
+                Y = picDisplay.Height / 2,
+            };
+            emitter.impactPoints.Add(point2);
+            point3 = new PaintPoint // создали точки расскрашивания
+            {
+                color = Color.Magenta,
+                X = picDisplay.Width / 4 *3,
+                Y = picDisplay.Height / 2,
+            };
+            emitter.impactPoints.Add(point3);
+            point4 = new PaintPoint // создали точки расскрашивания
+            {
+                color = Color.Olive,
+                X = picDisplay.Width / 6 * 5,
+                Y = picDisplay.Height / 4 *3,
+            };
+            emitter.impactPoints.Add(point4);
+            point5 = new PaintPoint // создали точки расскрашивания
+            {
+                color = Color.Gold,
+                X = picDisplay.Width / 6 ,
+                Y = picDisplay.Height / 4 *3,
+            };
+            emitter.impactPoints.Add(point5);
+            point6 = new ReboundPoint // создали точки расскрашивания
+            {
+                X = picDisplay.Width / 2,
+                Y = picDisplay.Height / 2,
+            };
+            emitter.impactPoints.Add(point6);
         }
 
 
@@ -57,8 +102,8 @@ namespace Курсовая_C
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
             // а тут в эмиттер передаем положение мыфки
-            emitter.MousePositionX = e.X;
-            emitter.MousePositionY = e.Y;
+            point6.X= e.X;
+            point6.Y = e.Y;
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)

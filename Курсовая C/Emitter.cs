@@ -11,7 +11,7 @@ namespace Курсовая_C
     class Emitter
     {
         public float GravitationX = 0;
-        public float GravitationY = 0;
+        public float GravitationY = 1;
         List<Particle> particles = new List<Particle>();
         public int MousePositionX;
         public int MousePositionY;
@@ -91,6 +91,13 @@ namespace Курсовая_C
         }
         public virtual void ResetParticle(Particle particle)
         {
+            if (particle is ParticleColorful)// Mеням цвет обратно на исходный
+            {
+                var p = (particle as ParticleColorful);
+                (particle as ParticleColorful).FromColor = ColorFrom;
+                p.ToColor = ColorTo;
+            }
+
             particle.Life = Particle.rand.Next(LifeMin, LifeMax);
 
             particle.X = X;
@@ -106,6 +113,7 @@ namespace Курсовая_C
             particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
 
             particle.Radius = Particle.rand.Next(RadiusMin, RadiusMax);
+
         }
         public virtual Particle CreateParticle()
         {
