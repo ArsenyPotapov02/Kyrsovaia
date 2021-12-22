@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,12 +38,32 @@ namespace Курсовая_C
                 float gY = Y - particle.Y;
                 float nX = gX - X;
                 float nY = gY - Y;
+                float angle;
 
                 double r = Math.Sqrt(gX * gX + gY * gY);
+
+                angle = (float)(Math.Acos((gX * nX + gY * nY) / (Math.Sqrt(gX * gX + nX * nX) + Math.Sqrt(gY * gY + nY * nY))));
                 if (r + particle.Radius < 80 / 2)
                 {
-                    particle.SpeedX = gX - 2 * (gX * nX) * nX;
-                    particle.SpeedY = gY - 2 * (gY * nY) * nY;
+                    if (particle is ParticleColorful)// Если частица разноцветная 
+                    {
+                        var p = (particle as ParticleColorful);
+                        var m = new Matrix();
+                        m.Rotate(angle);// Через матрицу трансформации поворацчиваем на угол
+
+                        var points = new[] { new PointF(gX, gY), new PointF(p.SpeedX, p.SpeedY) };
+                        m.TransformPoints(points);
+
+                        p.X = X - points[0].X;// Считаем новые координаты вылета частиц
+                        p.Y = Y - points[0].Y;// Считаем новые координаты вылета частиц
+                        p.SpeedX = points[1].X;// Считаем новый вектор частиц
+                        p.SpeedY = points[1].Y;// Считаем новый вектор частиц
+
+                        // p.SpeedX = (gX - 2 * (gX * nX) * nX)/1000;
+                        // p.SpeedY = (gY - 2 * (gY * nY) * nY)/1000;
+
+                    }
+                  
 
                 }
 

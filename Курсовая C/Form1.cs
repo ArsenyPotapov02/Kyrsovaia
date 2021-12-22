@@ -28,11 +28,11 @@ namespace Курсовая_C
             {
                 Direction = 0,
                 Spreading = 10,
-                SpeedMin = 10,
-                SpeedMax = 15,
+                SpeedMin = 1,
+                SpeedMax = 1,
                 ColorFrom = Color.Gold,
                 ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 50,
+                ParticlesPerTick = 5,
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 4 ,
             };
