@@ -28,11 +28,11 @@ namespace Курсовая_C
             {
                 Direction = 0,
                 Spreading = 10,
-                SpeedMin = 1,
-                SpeedMax = 1,
+                SpeedMin = 10,
+                SpeedMax = 15,
                 ColorFrom = Color.Gold,
                 ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 5,
+                ParticlesPerTick = 50,
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 4 ,
             };
@@ -61,7 +61,7 @@ namespace Курсовая_C
             emitter.impactPoints.Add(point3);
             point4 = new PaintPoint // создали точки расскрашивания
             {
-                color = Color.Olive,
+                color = Color.Red,
                 X = picDisplay.Width / 6 * 5,
                 Y = picDisplay.Height / 4 *3,
             };
@@ -73,7 +73,7 @@ namespace Курсовая_C
                 Y = picDisplay.Height / 4 *3,
             };
             emitter.impactPoints.Add(point5);
-            point6 = new ReboundPoint // создали точки расскрашивания
+            point6 = new ReboundPoint // отскакиваемая точка
             {
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 2,

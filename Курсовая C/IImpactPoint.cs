@@ -43,7 +43,7 @@ namespace Курсовая_C
                 double r = Math.Sqrt(gX * gX + gY * gY);
 
                 angle = (float)(Math.Acos((gX * nX + gY * nY) / (Math.Sqrt(gX * gX + nX * nX) + Math.Sqrt(gY * gY + nY * nY))));
-                if (r + particle.Radius < 80 / 2)
+                if (r + particle.Radius < 130 / 2)
                 {
                     if (particle is ParticleColorful)// Если частица разноцветная 
                     {
@@ -54,13 +54,13 @@ namespace Курсовая_C
                         var points = new[] { new PointF(gX, gY), new PointF(p.SpeedX, p.SpeedY) };
                         m.TransformPoints(points);
 
-                        p.X = X - points[0].X;// Считаем новые координаты вылета частиц
-                        p.Y = Y - points[0].Y;// Считаем новые координаты вылета частиц
-                        p.SpeedX = points[1].X;// Считаем новый вектор частиц
-                        p.SpeedY = points[1].Y;// Считаем новый вектор частиц
+                       // p.X = gX  ;// Считаем новые координаты вылета частиц
+                      //  p.Y = gY  ;// Считаем новые координаты вылета частиц
+                       // p.SpeedX = points[1].X;// Считаем новый вектор частиц
+                        //p.SpeedY = points[1].Y;// Считаем новый вектор частиц
 
-                        // p.SpeedX = (gX - 2 * (gX * nX) * nX)/1000;
-                        // p.SpeedY = (gY - 2 * (gY * nY) * nY)/1000;
+                         p.SpeedX = (gX - 2 * (gX * nX) * nX)/1000000000;
+                         p.SpeedY = (gY - 2 * (gY * nY) * nY)/100000000;
 
                     }
                   
@@ -90,7 +90,7 @@ namespace Курсовая_C
                 float gY = Y - particle.Y;
 
                 double r = Math.Sqrt(gX * gX + gY * gY);
-                if (r + particle.Radius < 80 / 2)
+                if (r + particle.Radius < 130 / 2)
                 {
                     if (particle is ParticleColorful)// Если частица разноцветная 
                     {
