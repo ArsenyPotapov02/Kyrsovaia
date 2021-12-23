@@ -29,12 +29,12 @@ namespace Курсовая_C
             this.emitter = new Emitter 
             {
                 Direction = 0,
-                Spreading = 10,
+                Spreading = 1,
                 SpeedMin = 10,
-                SpeedMax = 15,
+                SpeedMax = 10,
                 ColorFrom = Color.Gold,
                 ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 50,
+                ParticlesPerTick = 20,
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 4 ,
             };
@@ -75,22 +75,24 @@ namespace Курсовая_C
                 Y = picDisplay.Height / 4 *3,
             };
             emitter.impactPoints.Add(point5);
-            point6 = new ReboundPoint // отскакиваемая точка
+            point6 = new ReboundPoint 
             {
-                X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2,
+                
+                X = picDisplay.Width / 5 ,
+                Y = picDisplay.Height / 4 * 3,
             };
-            emitter.impactPoints.Add(point6);
-            point7 = new ReboundPoint // отскакиваемая точка
+            emitter.impactPoints.Add(point6); 
+            point7 = new ReboundPoint 
             {
-                X = picDisplay.Width / 6 *5,
-                Y = picDisplay.Height / 2*3,
+               
+                X = picDisplay.Width / 6 +200,
+                Y = picDisplay.Height / 4 * 3,
             };
             emitter.impactPoints.Add(point7);
-            point8 = new ReboundPoint // отскакиваемая точка
-            {
-                X = picDisplay.Width / 4 *5 ,
-                Y = picDisplay.Height / 8* 3,
+            point8 = new ReboundPoint { 
+                
+                X = picDisplay.Width / 6 *5 -200,
+                Y = picDisplay.Height / 4 * 3,
             };
             emitter.impactPoints.Add(point8);
         }
@@ -130,6 +132,13 @@ namespace Курсовая_C
         {
             label2.Text = $"Разброс {trackBar1.Value}°";
             emitter.Spreading = trackBar1.Value;
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            label3.Text = $"Количество частиц {trackBar2.Value}";
+            emitter.Spreading = trackBar2.Value;
+            emitter.ParticlesPerTick = trackBar2.Value;
         }
     }
 }

@@ -36,9 +36,12 @@ namespace Курсовая_C
             this.label1 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // picDisplay
@@ -78,9 +81,11 @@ namespace Курсовая_C
             // 
             this.trackBar1.Location = new System.Drawing.Point(376, 491);
             this.trackBar1.Maximum = 360;
+            this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(231, 45);
             this.trackBar1.TabIndex = 3;
+            this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // label2
@@ -92,11 +97,33 @@ namespace Курсовая_C
             this.label2.TabIndex = 4;
             this.label2.Text = "Разброс";
             // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(28, 538);
+            this.trackBar2.Maximum = 1000;
+            this.trackBar2.Minimum = 20;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(204, 45);
+            this.trackBar2.TabIndex = 5;
+            this.trackBar2.Value = 20;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(239, 538);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Колличество частиц";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 571);
+            this.ClientSize = new System.Drawing.Size(869, 595);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.label1);
@@ -107,6 +134,7 @@ namespace Курсовая_C
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +148,8 @@ namespace Курсовая_C
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

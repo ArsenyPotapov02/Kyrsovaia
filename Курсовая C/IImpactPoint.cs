@@ -29,21 +29,24 @@ namespace Курсовая_C
         }
         public class ReboundPoint : IImpactPoint
         {
+            public float angle = 0;
          
 
-            // а сюда по сути скопировали с минимальными правками то что было в UpdateState
+           
             public override void ImpactParticle(Particle particle)
             {
                 float gX = X - particle.X;
                 float gY = Y - particle.Y;
-                float nX = gX - X;
-                float nY = gY - Y;
-                float angle;
+                
+                float invLenght;
+                
+                float normalVectLenght = (float)Math.Sqrt(gX * gX + gY * gY);
+                float nX = gX / normalVectLenght;
+                float nY = gY / normalVectLenght;
 
-                double r = Math.Sqrt(gX * gX + gY * gY);
 
-                angle = (float)(Math.Acos((gX * nX + gY * nY) / (Math.Sqrt(gX * gX + nX * nX) + Math.Sqrt(gY * gY + nY * nY))));
-                if (r + particle.Radius < 130 / 2)
+                angle = (float)(Math.Cos((gX * nX + gY * nY) / (Math.Sqrt(gX * gX + nX * nX) + Math.Sqrt(gY * gY + nY * nY))))+270;
+                if (normalVectLenght + particle.Radius < 130 / 2)
                 {
                     if (particle is ParticleColorful)// Если частица разноцветная 
                     {
@@ -54,15 +57,16 @@ namespace Курсовая_C
                         var points = new[] { new PointF(gX, gY), new PointF(p.SpeedX, p.SpeedY) };
                         m.TransformPoints(points);
 
-                       // p.X = gX  ;// Считаем новые координаты вылета частиц
-                      //  p.Y = gY  ;// Считаем новые координаты вылета частиц
-                       // p.SpeedX = points[1].X;// Считаем новый вектор частиц
-                        //p.SpeedY = points[1].Y;// Считаем новый вектор частиц
+                        p.X = X - gX;// Считаем новые координаты вылета частиц
+                        p.Y = Y- gY;
+                        //p.SpeedX = points[1].X ;// Считаем новый вектор частиц
+                        //p.SpeedY = points[1].Y ;// Считаем новый вектор частиц
 
-                         p.SpeedX = (gX - 2 * (gX * nX) * nX)/1000000000;
-                         p.SpeedY = (gY - 2 * (gY * nY) * nY)/1000000000;
+                         p.SpeedX = (gX - 2 * (gX * nX) * nX);
+                         p.SpeedY = (gY - 2 * (gY * nY) * nY);
 
                     }
+
                   
 
                 }
@@ -77,6 +81,13 @@ namespace Курсовая_C
                     80,
                     80
                 );
+                g.DrawString(
+                   $"{(int)angle}",
+                   new Font("Verdana", 10),
+                   new SolidBrush(Color.White),
+                    X,
+                    Y
+              );
             }
         }
        
