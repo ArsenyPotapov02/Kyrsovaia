@@ -16,7 +16,7 @@ namespace Курсовая_C
         public int MousePositionX;
         public int MousePositionY;
         public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
-        public int ParticlesCount = 500;
+        public int ParticlesCount = 1;
 
 
         public int X; // координата X центра эмиттера, будем ее использовать вместо MousePositionX
@@ -45,10 +45,11 @@ namespace Курсовая_C
             foreach (var particle in particles)
             {
                 particle.check = this.check;
+               
 
                 if (particle.Life <= 0)
                 {
-                    ResetParticle(particle);
+                    
                     if (particlesToCreate > 0)
                     {
                         /* у нас как сброс частицы равносилен созданию частицы */
@@ -103,7 +104,7 @@ namespace Курсовая_C
                 p.ToColor = ColorTo;
             }
 
-            particle.Life = Particle.rand.Next(LifeMin, LifeMax);
+            particle.Life = 20+ Particle.rand.Next(LifeMin, LifeMax);
 
             particle.X = X;
             particle.Y = Y;
@@ -112,7 +113,7 @@ namespace Курсовая_C
                 + (double)Particle.rand.Next(Spreading)
                 - Spreading / 2;
 
-            var speed = Particle.rand.Next(SpeedMin, SpeedMax);
+            var speed = SpeedMin + Particle.rand.Next(SpeedMin, SpeedMax);
 
             particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
             particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
@@ -127,23 +128,6 @@ namespace Курсовая_C
             particle.ToColor = ColorTo;
 
             return particle;
-        }
-
-        public class TopEmitter : Emitter
-        {
-            public int Width;
-            public override void ResetParticle(Particle particle)
-            {
-                base.ResetParticle(particle); // вызываем базовый сброс частицы, там жизнь переопределяется и все такое
-
-                // а теперь тут уже подкручиваем параметры движения
-                particle.X = Particle.rand.Next(Width); // позиция X -- произвольная точка от 0 до Width
-                particle.Y = 0;  // ноль -- это верх экрана 
-
-                particle.SpeedY = 1; // падаем вниз по умолчанию
-                particle.SpeedX = Particle.rand.Next(-2, 2); // разброс влево и вправа у частиц
-            }
-        
         }
     }
 }
