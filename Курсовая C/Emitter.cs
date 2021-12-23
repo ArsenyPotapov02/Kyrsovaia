@@ -18,6 +18,7 @@ namespace Курсовая_C
         public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
         public int ParticlesCount = 500;
 
+
         public int X; // координата X центра эмиттера, будем ее использовать вместо MousePositionX
         public int Y; // соответствующая координата Y 
         public int Direction = 0; // вектор направления в градусах куда сыпет эмиттер
@@ -33,16 +34,18 @@ namespace Курсовая_C
         public Color ColorTo = Color.FromArgb(0, Color.Black); // конечный цвет частиц
 
         public int ParticlesPerTick = 1;
-        
+        public bool check;
        
 
         public void UpdateState()
         {
             int particlesToCreate = ParticlesPerTick;
 
+
             foreach (var particle in particles)
             {
-                
+                particle.check = this.check;
+
                 if (particle.Life <= 0)
                 {
                     ResetParticle(particle);

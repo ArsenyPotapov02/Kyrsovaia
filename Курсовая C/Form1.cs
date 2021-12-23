@@ -30,8 +30,8 @@ namespace Курсовая_C
             {
                 Direction = 0,
                 Spreading = 1,
-                SpeedMin = 10,
-                SpeedMax = 10,
+                SpeedMin = 5,
+                SpeedMax = 5,
                 ColorFrom = Color.Gold,
                 ColorTo = Color.FromArgb(0, Color.Red),
                 ParticlesPerTick = 20,
@@ -137,8 +137,12 @@ namespace Курсовая_C
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
             label3.Text = $"Количество частиц {trackBar2.Value}";
-            emitter.Spreading = trackBar2.Value;
             emitter.ParticlesPerTick = trackBar2.Value;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            emitter.check = checkBox1.Checked;
         }
     }
 }

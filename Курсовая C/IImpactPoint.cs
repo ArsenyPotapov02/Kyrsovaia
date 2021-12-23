@@ -45,29 +45,20 @@ namespace Курсовая_C
                 float nY = gY / normalVectLenght;
 
 
-                angle = (float)(Math.Cos((gX * nX + gY * nY) / (Math.Sqrt(gX * gX + nX * nX) + Math.Sqrt(gY * gY + nY * nY))))+270;
-                if (normalVectLenght + particle.Radius < 130 / 2)
+                angle = (float)(Math.Cos((gX * nX + gY * nY) / (Math.Sqrt(gX * gX + nX * nX) + Math.Sqrt(gY * gY + nY * nY))));
+                if (normalVectLenght  < 40 )
                 {
                     if (particle is ParticleColorful)// Если частица разноцветная 
                     {
                         var p = (particle as ParticleColorful);
-                        var m = new Matrix();
-                        m.Rotate(angle);// Через матрицу трансформации поворацчиваем на угол
+                        float dot = p.SpeedX * nX + p.SpeedY * nY;
+                        p.SpeedX = p.SpeedX - 2 *dot *nX;
+                        p.SpeedY = p.SpeedY - 2 *dot * nY;
 
-                        var points = new[] { new PointF(gX, gY), new PointF(p.SpeedX, p.SpeedY) };
-                        m.TransformPoints(points);
-
-                        p.X = X - gX;// Считаем новые координаты вылета частиц
-                        p.Y = Y- gY;
-                        //p.SpeedX = points[1].X ;// Считаем новый вектор частиц
-                        //p.SpeedY = points[1].Y ;// Считаем новый вектор частиц
-
-                         p.SpeedX = (gX - 2 * (gX * nX) * nX);
-                         p.SpeedY = (gY - 2 * (gY * nY) * nY);
+                        p.X += p.SpeedX; 
+                        p.Y += p.SpeedY;
 
                     }
-
-                  
 
                 }
 
@@ -81,13 +72,7 @@ namespace Курсовая_C
                     80,
                     80
                 );
-                g.DrawString(
-                   $"{(int)angle}",
-                   new Font("Verdana", 10),
-                   new SolidBrush(Color.White),
-                    X,
-                    Y
-              );
+               
             }
         }
        

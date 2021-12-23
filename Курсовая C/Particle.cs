@@ -18,7 +18,7 @@ namespace Курсовая_C
         public float Life; // запас здоровья частицы
 
         public static Random rand = new Random();
-
+        public bool check;
         // конструктор по умолчанию будет создавать кастомную частицу
         public Particle()
         {
@@ -55,6 +55,7 @@ namespace Курсовая_C
             // два новых поля под цвет начальный и конечный
             public Color FromColor;
             public Color ToColor;
+            
 
             // для смеси цветов
             public static Color MixColor(Color color1, Color color2, float k)
@@ -78,7 +79,13 @@ namespace Курсовая_C
 
                 g.FillEllipse(b, X - Radius, Y - Radius, Radius * 2, Radius * 2);
 
+                if (check)
+                {
+                    g.DrawLine(new Pen(Color.White), X , Y , X  + SpeedX*5 , Y  + SpeedY*5 );
+                  
+                }
                 b.Dispose();
+
             }
         }
     }
