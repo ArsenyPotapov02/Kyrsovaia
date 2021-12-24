@@ -30,7 +30,9 @@ namespace Курсовая_C
         public class ReboundPoint : IImpactPoint
         {
             public float angle = 0;
+         
 
+           
             public override void ImpactParticle(Particle particle)
             {
                 float gX = X - particle.X;
@@ -39,9 +41,10 @@ namespace Курсовая_C
                 float invLenght;
                 
                 float normalVectLenght = (float)Math.Sqrt(gX * gX + gY * gY);
-                float nX = gX / normalVectLenght;  // длинна вектора
+                float nX = gX / normalVectLenght;
                 float nY = gY / normalVectLenght;
-                // формула для расчёта угла между веторами
+
+
                 angle = (float)(Math.Cos((gX * nX + gY * nY) / (Math.Sqrt(gX * gX + nX * nX) + Math.Sqrt(gY * gY + nY * nY))));
                 if (normalVectLenght  < 40 )
                 {
@@ -49,14 +52,16 @@ namespace Курсовая_C
                     {
                         var p = (particle as ParticleColorful);
                         float dot = p.SpeedX * nX + p.SpeedY * nY;
-                        p.SpeedX = p.SpeedX - 2 *dot *nX;// ищем векторную скорость
+                        p.SpeedX = p.SpeedX - 2 *dot *nX;
                         p.SpeedY = p.SpeedY - 2 *dot * nY;
 
                         p.X += p.SpeedX; 
                         p.Y += p.SpeedY;
+
                     }
 
                 }
+
             }
             public override void Render(Graphics g)
             {
@@ -70,6 +75,7 @@ namespace Курсовая_C
                
             }
         }
+       
         public class PaintPoint : IImpactPoint // Точка перекрашивания
         {
             public Color color;

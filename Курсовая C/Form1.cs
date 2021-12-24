@@ -30,8 +30,8 @@ namespace Курсовая_C
             {
                 Direction = 0,
                 Spreading = 1,
-                SpeedMin = 10,
-                SpeedMax = 15,
+                SpeedMin = 5,
+                SpeedMax = 5,
                 ColorFrom = Color.Gold,
                 ColorTo = Color.FromArgb(0, Color.Red),
                 ParticlesPerTick = 20,
@@ -47,35 +47,35 @@ namespace Курсовая_C
                Y = picDisplay.Height / 2,
             };
             emitter.impactPoints.Add(point1);
-            point2 = new PaintPoint 
+            point2 = new PaintPoint // создали точки расскрашивания
             {
                 color = Color.LightYellow,
                 X = picDisplay.Width / 4,
                 Y = picDisplay.Height / 2,
             };
             emitter.impactPoints.Add(point2);
-            point3 = new PaintPoint 
+            point3 = new PaintPoint // создали точки расскрашивания
             {
                 color = Color.Magenta,
                 X = picDisplay.Width / 4 *3,
                 Y = picDisplay.Height / 2,
             };
             emitter.impactPoints.Add(point3);
-            point4 = new PaintPoint 
+            point4 = new PaintPoint // создали точки расскрашивания
             {
                 color = Color.Red,
                 X = picDisplay.Width / 6 * 5,
                 Y = picDisplay.Height / 4 *3,
             };
             emitter.impactPoints.Add(point4);
-            point5 = new PaintPoint 
+            point5 = new PaintPoint // создали точки расскрашивания
             {
                 color = Color.Gold,
                 X = picDisplay.Width / 6 ,
                 Y = picDisplay.Height / 4 *3,
             };
             emitter.impactPoints.Add(point5);
-            point6 = new ReboundPoint // создали точки отражения частиц
+            point6 = new ReboundPoint 
             {
                 
                 X = picDisplay.Width / 5 ,
@@ -97,51 +97,52 @@ namespace Курсовая_C
             emitter.impactPoints.Add(point8);
         }
 
+
         private void timer1_Tick(object sender, EventArgs e)
         {
-            emitter.UpdateState(); 
+            emitter.UpdateState(); // тут теперь обновляем эмиттер
 
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
                 g.Clear(Color.Black);
-                emitter.Render(g); 
+                emitter.Render(g); // а тут теперь рендерим через эмиттер
             }
 
             picDisplay.Invalidate();
         }
 
+
+        // добавляем переменные для хранения положения мыши
         private int MousePositionX = 0;
         private int MousePositionY = 0;
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            
+            // а тут в эмиттер передаем положение мыфки
             point6.X= e.X;
             point6.Y = e.Y;
         }
 
-        private void tbDirection_Scroll(object sender, EventArgs e) 
+        private void tbDirection_Scroll(object sender, EventArgs e)
         {
             label1.Text = $"Направление {tbDirection.Value}°";
             emitter.Direction = tbDirection.Value;
         }
-        // добавил ползунок на увеличение разброса частиц
-        private void trackBar1_Scroll(object sender, EventArgs e) 
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
         {
             label2.Text = $"Разброс {trackBar1.Value}°";
             emitter.Spreading = trackBar1.Value;
         }
-        // добавил ползунок на увеличение кол-во частиц
+
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
             label3.Text = $"Количество частиц {trackBar2.Value}";
             emitter.ParticlesPerTick = trackBar2.Value;
         }
-        // добавил кнопку выбора на добавление вектора скорости у частиц
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             emitter.check = checkBox1.Checked;
         }
-
-        
     }
 }

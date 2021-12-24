@@ -114,9 +114,9 @@ namespace Курсовая_C
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(239, 538);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.Size = new System.Drawing.Size(109, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Количество частиц";
+            this.label3.Text = "Колличество частиц";
             // 
             // checkBox1
             // 
@@ -143,7 +143,7 @@ namespace Курсовая_C
             this.Controls.Add(this.tbDirection);
             this.Controls.Add(this.picDisplay);
             this.Name = "Form1";
-            this.Text = "Система управления частицами";
+            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
