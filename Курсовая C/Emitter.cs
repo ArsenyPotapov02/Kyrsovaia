@@ -47,7 +47,7 @@ namespace Курсовая_C
                 particle.check = this.check;
                
 
-                if (particle.Life <= 0)
+                if (particle.Life <= 0 && particle.SpeedX==0 && particle.SpeedY==0)
                 {
                     
                     if (particlesToCreate > 0)
