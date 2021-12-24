@@ -45,15 +45,16 @@ namespace Курсовая_C
             foreach (var particle in particles)
             {
                 particle.check = this.check;
-               
+                
 
-                if (particle.Life <= 0)
+                if (particle.Life <= 0 && particle.SpeedX==0 && particle.SpeedY==0)
+                   // добавил условия для удаления зависших частиц
                 {
-                    
+                    //ResetParticle удалил для нормальной работы уменьшения частиц 
                     if (particlesToCreate > 0)
                     {
-                        /* у нас как сброс частицы равносилен созданию частицы */
-                        particlesToCreate -= 1; // поэтому уменьшаем счётчик созданных частиц на 1
+                      
+                        particlesToCreate -= 1; 
                         ResetParticle(particle);
                     }
                 }
@@ -84,15 +85,15 @@ namespace Курсовая_C
         }
         public void Render(Graphics g)
         {
-            // утащили сюда отрисовку частиц
+            
             foreach (var particle in particles)
             {
                 particle.Draw(g);
             }
-            foreach (var point in impactPoints) // тут теперь  impactPoints
+            foreach (var point in impactPoints) 
             {
                
-                point.Render(g); // это добавили
+                point.Render(g); 
             }
         }
         public virtual void ResetParticle(Particle particle)
